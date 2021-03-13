@@ -8,14 +8,16 @@ namespace DIO.Bank
 		private TipoConta TipoConta { get; set; }
 		private double Saldo { get; set; }
 		private double Credito { get; set; }
+		private double LimiteDisp { get; set; }
 		private string Nome { get; set; }
 
 		// Métodos
-		public Conta(TipoConta tipoConta, double saldo, double credito, string nome)
+		public Conta(TipoConta tipoConta, double saldo, double credito, double limiteDisp, string nome)
 		{
 			this.TipoConta = tipoConta;
 			this.Saldo = saldo;
 			this.Credito = credito;
+			this.LimiteDisp = limiteDisp;
 			this.Nome = nome;
 		}
 
@@ -54,7 +56,8 @@ namespace DIO.Bank
             retorno += "TipoConta " + this.TipoConta + " | ";
             retorno += "Nome " + this.Nome + " | ";
             retorno += "Saldo " + this.Saldo + " | ";
-            retorno += "Crédito " + this.Credito;
+			retorno += "Crédito " + this.Credito + " | ";
+			retorno += "Limite Disponível para Uso " + (this.Saldo + this.Credito) + " | ";
 			return retorno;
 		}
 	}
