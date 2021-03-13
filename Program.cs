@@ -33,8 +33,10 @@ namespace DIO.Bank
 						Console.Clear();
 						break;
 
-					default:
-						throw new ArgumentOutOfRangeException();
+				    default:
+                        Console.Clear();
+						Console.WriteLine("Esta opção não está disponível. Vamos tentar novamente? \n ");				
+                        break;
 				}
 
 				opcaoUsuario = ObterOpcaoUsuario();
@@ -60,7 +62,7 @@ namespace DIO.Bank
 			Console.Write("Digite o número da conta: ");
 			int indiceConta = int.Parse(Console.ReadLine());
 
-			Console.Write("Digite o valor a ser sacado: ");
+			Console.Write("Digite o valor que deseja sacar: ");
 			double valorSaque = double.Parse(Console.ReadLine());
 
             listContas[indiceConta].Sacar(valorSaque);
@@ -99,6 +101,7 @@ namespace DIO.Bank
 			Conta novaConta = new Conta(tipoConta: (TipoConta)entradaTipoConta,
 										saldo: entradaSaldo,
 										credito: entradaCredito,
+										limiteDisp: (entradaSaldo + entradaCredito),
 										nome: entradaNome);
 
 			listContas.Add(novaConta);
@@ -125,7 +128,7 @@ namespace DIO.Bank
 		private static string ObterOpcaoUsuario()
 		{
 			Console.WriteLine();
-			Console.WriteLine("DIO Bank a seu dispor!!!");
+			Console.WriteLine("DIO Bank a seu dispor!!! \n");
 			Console.WriteLine("Informe a opção desejada:");
 
 			Console.WriteLine("1- Listar contas");
